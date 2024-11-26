@@ -9,8 +9,8 @@ Completo:
 
 
 
-docs:
-https://docs.pydantic.dev/latest/
-https://www.psycopg.org/psycopg3/docs/api/sql.html#module-psycopg.sql
-https://www.psycopg.org/psycopg3/docs/
-https://fastapi.tiangolo.com/#installation
+<br>docs:
+<br>https://docs.pydantic.dev/latest/
+<br>https://www.psycopg.org/psycopg3/docs/api/sql.html#module-psycopg.sql
+<br>https://www.psycopg.org/psycopg3/docs/
+<br>https://fastapi.tiangolo.com/#installation
