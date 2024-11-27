@@ -20,26 +20,31 @@ class Clientes():
                                           name='',
                                           methods=['GET'],
                                           response_model=getClientes,
-                                          status_code=200)
+                                          status_code=200
+                                          )
         self.ClientesRouter.add_api_route('',
                                           self.set_Cliente,
                                           description="Alocar cliente no bd",
                                           name='',
                                           methods=['POST'],
                                           response_model=setCliente,
-                                          status_code=200)
+                                          status_code=200
+                                          )
         self.ClientesRouter.add_api_route('',
                                           self.deletar_cliente,
                                           description="Deletar cliente do bd",
                                           name='',
                                           methods=['DELETE'],
-                                          status_code=200)
+                                          status_code=200
+                                          )
         self.ClientesRouter.add_api_route('',
                                           self.alterar_cliente,
                                           description="Alterar cliente do bd",
                                           name='',
                                           methods=['PATCH'],
-                                          status_code=200)
+                                          response_model=setCliente,
+                                          status_code=200
+                                          )
 
     def get_Clientes(self):
         try:
@@ -83,13 +88,13 @@ class Clientes():
                 raise E
             else:
                 raise HTTPException(400, str(E))
-    def deletar_cliente(self, cpf):
+            
+    def deletar_cliente(self, cliente_info: setCliente):
         try:
             with DataBase() as banco:
-                banco.execute('DELETE FROM cliente WHERE cpf = %s', [cpf])
+                banco.execute('DELETE FROM cliente WHERE id = %s', [cliente_info.id])
                 banco.commit()
                 return JSONResponse({'detail':'sucess'}, 200)
-                
         except Exception as E:
             if isinstance(E, HTTPException):
                 raise E
