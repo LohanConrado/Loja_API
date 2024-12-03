@@ -56,7 +56,7 @@ class Produtos():
             model_list_produtos = getProdutos.model_construct()
             model_list_produtos.produtos.clear()
             with DataBase() as banco:
-                query_produtos = ("SELECT * FROM produto")
+                query_produtos = ("SELECT * FROM produto WHERE active = 1")
                 resultado = banco.query(query_produtos)
                 if resultado:
                     for id in resultado:
